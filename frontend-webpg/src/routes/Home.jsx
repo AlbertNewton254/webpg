@@ -14,7 +14,7 @@ function Home() {
           <span className="block font-bold text-2xl mb-4 text-left">Bel,</span>
           Esta surpresa aqui é um pouco diferente, porque não se vai encerrar como as outras.
           Com este site, toda e qualquer pessoa no mundo poderá ver um pouco de nosso amor ao longo dos próximos anos,
-          com algumas fotos, vídeos e poemas que por dever adicionarei aqui a cada mês, além de poderem ver, a qualquer momento,
+          com algumas fotos, vídeos e poemas que com carinho eu selecionei, além de poderem ver, a qualquer momento,
           o tempo que se passou desde as 14 horas de 11 de novembro de 2024, quando enfim te pedi a mão. 
 
           <span className="italic block my-4">
