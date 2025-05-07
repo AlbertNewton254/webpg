@@ -369,6 +369,14 @@ function Writings() {
         </>
       ),
     },
+    {
+      title: "Todo o meu amar",
+      content: (
+      <>
+        <p>Vou-me a escrever minha paixão,</p>
+      </>
+      ),
+    },
   ];
 
   const handleCardClick = (title, content) => {
