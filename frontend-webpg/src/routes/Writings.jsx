@@ -7,15 +7,13 @@ function Writings() {
   const [selectedContent, setSelectedContent] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState(null);
 
-  // Efeito para bloquear/desbloquear a rolagem da página quando o modal está aberto
   useEffect(() => {
     if (isModalOpen) {
-      document.body.style.overflow = "hidden"; // Bloqueia a rolagem da página
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Restaura a rolagem da página
+      document.body.style.overflow = "auto";
     }
 
-    // Limpeza do efeito
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -372,8 +370,34 @@ function Writings() {
     {
       title: "Todo o meu amar",
       content: (
-      <>
+        <>
         <p>Vou-me a escrever minha paixão,</p>
+        <p>Caneta e papel na minha mão;</p>
+        <p>E deixo escorrer tal como mel</p>
+        <p>O tanto que te amo, amor Bebel…</p>
+        <br />
+        <p>Por cartas, chocolates e buquê,</p>
+        <p>Eu tento demonstrar-te, a você,</p>
+        <p>Que toda a minha vida,</p>
+        <p>Quer no estresse, quer tranquila,</p>
+        <p>Se transforma simplesmente por te ter!</p>
+        <br />
+        <p>Este Agostinho se dobrou ao teus encantos,</p>
+        <p>Antonieta seduziu Marx malandro;</p>
+        <p>Vida e morte, bem e mal,</p>
+        <p>Céu e Inferno, terra e mar,</p>
+        <p>Questione tudo, exceto todo o meu amar!</p>
+        <br />
+        <p>O Chat GPT que me perdoe:</p>
+        <p>Não te quer mais que te quero, bem de longe;</p>
+        <p>E, sendo marmoteiro como sou,</p>
+        <p>Esta marmota eu converto em amor.</p>
+        <br />
+        <p>E dane-se o mundo se, no fim,</p>
+        <p>Ele estiver contra nosso destin’,</p>
+        <p>Pois saiba, minha rainha,</p>
+        <p>Que, quer nesta ou noutra vida,</p>
+        <p>Eu só quero viver tendo-te aqui…</p>
       </>
       ),
     },
@@ -392,56 +416,65 @@ function Writings() {
   };
 
   return (
-    <div className="min-h-screen bg-red-900 flex flex-col items-center pb-10">
+    <div className="min-h-screen bg-red-900">
       <Header />
-      <h1 className="text-center text-white text-4xl mb-8">Escritos</h1>
+      
+      <main className="px-4 sm:px-6 py-6">
+        <h1 className="text-center text-white text-2xl sm:text-3xl mb-6">
+          Escritos
+        </h1>
 
-      <div className="grid gap-8 px-8 max-w-screen-lg w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative mb-10">
-        {writings.map((writing, index) => (
-          <div
-            key={index}
-            className="bg-white text-red-900 p-8 rounded-2xl shadow-2xl leading-relaxed cursor-pointer"
-            onClick={() => handleCardClick(writing.title, writing.content)}
-            style={{ minHeight: "200px" }}
-          >
-            <h2 className="font-bold text-xl mb-4">{writing.title}</h2>
-            <div className="text-justify">
-              {React.Children.toArray(writing.content.props.children)
-                .filter((child) => child.type === "p")
-                .slice(0, 4)
-                .map((paragraph, i) => (
-                  <React.Fragment key={i}>{paragraph}</React.Fragment>
-                ))}
-              <p className="text-gray-500 mt-2">...</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {isModalOpen && (
-        <>
-          {/* Fundo escurecido */}
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
-
-          {/* Modal */}
-          <div className="fixed inset-0 flex items-center justify-center z-20">
-            <div className="bg-white text-red-900 p-8 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative mx-4">
-              {/* Cabeçalho do modal com título e botão de fechar */}
-              <div className="flex justify-between items-start mb-4">
-                <h2 className="font-bold text-xl">{selectedTitle}</h2>
-                {/* Botão de fechar alinhado com o título */}
-                <button
-                  className="bg-red-900 text-white px-3 py-1 rounded-full hover:bg-red-700 transition-colors"
-                  onClick={handleCloseModal}
-                >
-                  ×
-                </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+          {writings.map((writing, index) => (
+            <div
+              key={index}
+              className="bg-white text-red-900 p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-64 flex flex-col"
+              onClick={() => handleCardClick(writing.title, writing.content)}
+            >
+              <h2 className="font-bold text-lg sm:text-xl mb-2 truncate">
+                {writing.title}
+              </h2>
+              <div className="text-justify text-sm sm:text-base overflow-hidden flex-grow">
+                <div className="h-full overflow-hidden">
+                  {React.Children.toArray(writing.content.props.children)
+                    .filter((child) => child.type === "p")
+                    .slice(0, 3)
+                    .map((paragraph, i) => (
+                      <p key={i} className="mb-2 line-clamp-3">
+                        {paragraph.props.children}
+                      </p>
+                    ))}
+                  <p className="text-gray-500 mt-2 text-center">...</p>
+                </div>
               </div>
-              <div className="text-justify">{selectedContent}</div>
             </div>
-          </div>
-        </>
-      )}
+          ))}
+        </div>
+
+        {isModalOpen && (
+          <>
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+            <div className="fixed inset-0 flex items-center justify-center z-20 p-4">
+              <div className="bg-white text-red-900 p-6 rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                <div className="flex justify-between items-start mb-4">
+                  <h2 className="font-bold text-xl sm:text-2xl">
+                    {selectedTitle}
+                  </h2>
+                  <button
+                    className="bg-red-900 text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-700 transition-colors"
+                    onClick={handleCloseModal}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="text-justify text-base">
+                  {selectedContent}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </main>
     </div>
   );
 }

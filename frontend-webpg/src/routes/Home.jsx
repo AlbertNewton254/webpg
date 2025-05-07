@@ -5,31 +5,44 @@ function Home() {
   return (
     <div className="min-h-screen bg-red-900 flex flex-col items-center">
       <Header />
-      <h1 className="text-center text-white text-4xl mb-8">Home</h1>
+      
+      <main className="w-full px-4 sm:px-6 py-6 flex flex-col items-center">
+        <h1 className="text-center text-white text-2xl sm:text-3xl mb-4 sm:mb-6">
+          Home
+        </h1>
 
-      {/* Seção Principal */}
-      <div className="flex flex-col items-center px-8 max-w-screen-md gap-6">
-        {/* Carta Centralizada */}
-        <p className="bg-white text-red-900 text-justify w-180 h-auto p-6 rounded-2xl shadow-2xl leading-relaxed text-lg">
-          <span className="block font-bold text-2xl mb-4 text-left">Bel,</span>
-          Esta surpresa aqui é um pouco diferente, porque não se vai encerrar como as outras.
-          Com este site, toda e qualquer pessoa no mundo poderá ver um pouco de nosso amor ao longo dos próximos anos,
-          com algumas fotos, vídeos e poemas que com carinho eu selecionei, além de poderem ver, a qualquer momento,
-          o tempo que se passou desde as 14 horas de 11 de novembro de 2024, quando enfim te pedi a mão. 
+        {/* Container único para carta e counter com mesma largura */}
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md flex flex-col items-center">
+          
+          {/* Carta ajustada para mesma largura do counter */}
+          <div className="bg-white text-red-900 text-justify w-full p-4 sm:p-5 rounded-lg shadow-md leading-relaxed mb-6 sm:mb-8">
+            <span className="block font-bold text-xl sm:text-2xl mb-3">
+              Bel,
+            </span>
+            
+            <p className="mb-3 text-sm sm:text-base">
+              Esta surpresa aqui é um pouco diferente, porque não se vai encerrar como as outras.
+              Com este site, toda e qualquer pessoa no mundo poderá ver um pouco de nosso amor ao longo dos próximos anos,
+              com algumas fotos, vídeos e poemas que com carinho eu selecionei, além de poderem ver, a qualquer momento,
+              o tempo que se passou desde as 14 horas de 11 de novembro de 2024, quando enfim te pedi a mão.
+            </p>
 
-          <span className="italic block my-4">
-            Nosso amor é para a história! Então sejamos inteligentes e já deixemos para os futuros pesquisadores 
-            um material bem organizado para que a possam reconstruir um dia... Com amor,
-          </span>
-          <br />
-          <span className="block text-right font-bold">Miguel</span>
-        </p>
+            <p className="italic mb-3 text-sm sm:text-base">
+              Nosso amor é para a história! Então sejamos inteligentes e já deixemos para os futuros pesquisadores 
+              um material bem organizado para que a possam reconstruir um dia... Com amor,
+            </p>
+            
+            <p className="text-right font-bold text-sm sm:text-base">
+              Miguel
+            </p>
+          </div>
 
-        {/* Counter Centralizado */}
-        <div className="w-full max-w-md flex justify-center mb-6">
-          <Counter />
+          {/* Counter - agora com a mesma largura da carta */}
+          <div className="w-full">
+            <Counter />
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
